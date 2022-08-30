@@ -1,0 +1,16 @@
+<div fxLayoutAlign = "end">
+    <button mat-button [mat-dialog-close] = "true">
+        <mat-icon matListIcon>close</mat-icon>
+    </button>
+</div>
+<br>
+<h2 mat-title>{{ data.name }}</h2>
+<mat-dialog-content>
+    <img src="{{ data.imagePath }}" alt="data.name">
+    <ul>
+        <li><mat-icon>description</mat-icon> {{ data.description }}</li>
+        <li><mat-icon>public</mat-icon> {{ data.country }}</li>
+        <li><mat-icon>sell</mat-icon> {{ data.price }}</li>
+        <li><mat-icon>star_border</mat-icon> {{ data.review }}</li>
+    </ul>
+</mat-dialog-content>

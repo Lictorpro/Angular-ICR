@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-3 mt-4 text-start">
+      <h2>Filter</h2>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search by category" style="width: 300px"
+          [(ngModel)]="searchTerm" />
+      </div>
+    </div>
+
+    <!--<div class="col-md-9 mt-2">
+      <div class="row">
+        <div class="col-md-4 mt-3" *ngFor="let exhibition of filteredExhibitions">
+          <h2>{{ exhibition.name }}</h2>
+          <img class="exhibition-img img-fluid rounded" src="{{ exhibition.imagePath }}" alt="{{ exhibition.name }}" />
+          <button mat-flat-button color="accent" class="mt-2" (click)="getDetails(exhibition.id)">
+            Details
+          </button>
+        </div>
+      </div>
+    </div>-->
+
+    <div class="col-md-9 mt-2">
+      <div class="row">
+        <mat-card class="example-card col-md-4 mt-3 me-3" *ngFor="let exhibition of filteredExhibitions">
+          <mat-card-header>
+            <mat-card-title>{{ exhibition.name }}</mat-card-title>
+            <mat-card-subtitle>{{ exhibition.category }}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="{{ exhibition.imagePath }}" alt="{{ exhibition.name }}">
+
+          <mat-card-actions>
+            <button mat-flat-button color="accent" (click)="getDetails(exhibition.id)">Details</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

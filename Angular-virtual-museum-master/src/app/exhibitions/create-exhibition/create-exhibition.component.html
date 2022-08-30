@@ -1,0 +1,22 @@
+<section>
+    <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutGap="10px">
+        <mat-form-field>
+            <input type="text" matInput placeholder="Ime" ngModel name="name" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput placeholder="Kategorija" ngModel name="category" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput placeholder="Putanja slike" ngModel name="imagePath" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput placeholder="Cena" ngModel name="price" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput placeholder="Vreme" ngModel name="time" required>
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="accent" [disabled]="f.invalid">Kreiraj postavku</button>
+        <mat-label *ngIf="errorExists">{{ errorText }}</mat-label>
+        <a routerLink="/">Vrati se na pocetni ekran.</a>
+    </form>
+</section>

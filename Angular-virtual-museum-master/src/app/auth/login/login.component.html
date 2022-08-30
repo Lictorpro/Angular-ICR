@@ -1,0 +1,14 @@
+<section>
+    <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutGap="10px">
+        <mat-form-field>
+            <input type="text" matInput placeholder="Korisničko ime" ngModel name="username" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="password" matInput placeholder="Lozinka" ngModel name="password" required>
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="accent" [disabled]="f.invalid">Prijavi se</button>
+        <mat-label *ngIf="errorExists">{{ errorText }}</mat-label>
+        <a routerLink="/register">Nemam otvoren nalog</a>
+    </form>
+</section>
+

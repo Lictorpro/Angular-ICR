@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+    <div><span>Art Museum</span></div>
+    <div class="nav">
+        <ul>
+            <li><a><button routerLink="/register" mat-button routerLinkActive="active">Register</button></a></li>
+            <li><a><button routerLink="/login" mat-button routerLinkActive="active">Log In</button></a></li>
+            <li><a><button routerLink="/exhibitions" mat-button routerLinkActive="active">Exhibitions</button></a></li>
+            <li><a><button mat-button (click)="openProfile(this.userService.currentUser.id)">{{
+                        this.userService.currentUser.username }}</button></a></li>
+            <li><a><button mat-button routerLink="/exhibitions/create-exhibition" mat-button
+                        routerLinkActive="active">Create
+                        exhibition</button></a></li>
+        </ul>
+    </div>
+</mat-toolbar>

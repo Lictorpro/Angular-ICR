@@ -1,0 +1,123 @@
+<div fxLayoutAlign = "space-between">
+    <button mat-icon-button>
+        <mat-icon matListIcon *ngIf="this.profileForInput.id == this.userService.currentUser.id" (click)="this.isEditing = !this.isEditing">edit</mat-icon>
+    </button>
+    <button mat-button [mat-dialog-close] = "true">
+        <mat-icon matListIcon>close</mat-icon>
+    </button>
+</div>
+<br>
+
+<mat-dialog-content>
+    <form fxLayout="column" fxLayoutGap="3vh" #editForm="ngForm" (ngSubmit)="finishEditing(editForm)">
+        <!--Username-->
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+                <mat-icon>person</mat-icon>
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>Korisničko ime</mat-card-subtitle>
+                    <span>{{ this.profileForInput.username }}</span>
+                </div>
+                <mat-form-field *ngIf="this.isEditing">
+                    <input matInput type="text" placeholder="Korisničko ime" ngModel name="username" [(ngModel)]="this.profileForInput.username" required #usernameInput="ngModel">
+                    <mat-error *ngIf="usernameInput.hasError('required')">Korisničko ime mora biti popunjeno!</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-card>
+        <!--Password-->
+        <mat-card *ngIf="this.isEditing"> 
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+                <mat-icon>lock</mat-icon>
+                <mat-form-field hintLabel="Lozinka mora biti duga najmanje 4 karaktera.">
+                    <input matInput type="password" placeholder="Lozinka" ngModel name="password" minlength="4" [(ngModel)]="this.profileForInput.password" password required #passwordInput="ngModel">
+                </mat-form-field>
+                <mat-hint align="end">{{ passwordInput.value?.length }}/4</mat-hint>
+            </div>
+        </mat-card>
+        <!--FirstName-->
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+                <mat-icon>face</mat-icon>
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>Ime</mat-card-subtitle>
+                    <span>{{ this.profileForInput.firstName }}</span>
+                </div>
+                <mat-form-field *ngIf="this.isEditing">
+                    <input matInput type="text" placeholder="Ime" ngModel name="firstName" [(ngModel)]="this.profileForInput.firstName" required #firstNameInput="ngModel">
+                    <mat-error *ngIf="firstNameInput.hasError('required')">Ime mora biti popunjeno!</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-card>
+        <!--LastName-->
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+                <mat-icon>face</mat-icon>
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>Prezime</mat-card-subtitle>
+                    <span>{{ this.profileForInput.lastName }}</span>
+                </div>
+                <mat-form-field *ngIf="this.isEditing">
+                    <input matInput type="text" placeholder="Prezime" ngModel name="lastName" [(ngModel)]="this.profileForInput.lastName" required #lastNameInput="ngModel">
+                    <mat-error *ngIf="lastNameInput.hasError('required')">Prezime mora biti popunjeno!</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-card>
+        <!--Email-->
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+                <mat-icon>alternate_email</mat-icon>
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>Email</mat-card-subtitle>
+                    <span>{{ this.profileForInput.email }}</span>
+                </div>
+                <mat-form-field *ngIf="this.isEditing">
+                    <input matInput type="email" placeholder="Email" ngModel name="email" [(ngModel)]="this.profileForInput.email" required #emailInput="ngModel">
+                    <mat-error *ngIf="emailInput.hasError('required')">Email mora biti popunjen!</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-card>
+        <!--Phone-->
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+                <mat-icon>call</mat-icon>
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>Broj telefona</mat-card-subtitle>
+                    <span>{{ this.profileForInput.phone }}</span>
+                </div>
+                <mat-form-field *ngIf="this.isEditing">
+                    <input matInput type="text" placeholder="Broj telefona" ngModel name="phone" [(ngModel)]="this.profileForInput.phone" required #phoneInput="ngModel">
+                    <mat-error *ngIf="phoneInput.hasError('required')">Broj telefona mora biti popunjen!</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-card>
+        <!--Address-->
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+                <mat-icon>home</mat-icon>
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>Adresa</mat-card-subtitle>
+                    <span>{{ this.profileForInput.address }}</span>
+                </div>
+                <mat-form-field *ngIf="this.isEditing">
+                    <input matInput type="text" placeholder="Adresa" ngModel name="address" [(ngModel)]="this.profileForInput.address" required #addressInput="ngModel">
+                    <mat-error *ngIf="addressInput.hasError('required')">Adresa mora biti popunjena!</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-card>
+        <!--FavouriteExhibits-->
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+                <mat-icon>insert_emoticon</mat-icon>
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>Omiljena vrsta eksponata</mat-card-subtitle>
+                    <span>{{ this.profileForInput.favouriteExhibits }}</span>
+                </div>
+                <mat-form-field *ngIf="this.isEditing">
+                    <input matInput type="text" placeholder="Omiljena vrsta eksponata" ngModel name="favouriteExhibits" [(ngModel)]="this.profileForInput.favouriteExhibits" required #favouriteExhibitsInput="ngModel">
+                    <mat-error *ngIf="favouriteExhibitsInput.hasError('required')">Omiljena vrsta eksonata mora biti popunjena!</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-card>
+        <button *ngIf="this.isEditing" mat-raised-button type="submit" color="primary">Sačuvaj izmene</button>
+    </form>
+</mat-dialog-content>

@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <h2>{{ exhibition.name }}</h2>
+        <div class="col-md mt-2 text-center">
+            <img class="img-fluid rounded mb-5" src="{{ exhibition.imagePath }}" alt="{{ exhibition.name }}">
+        </div>
+        <div class="col-md">
+            <ul>
+                <li>
+                    <mat-card>
+                        <mat-icon>category</mat-icon> {{ exhibition.category }}
+                    </mat-card>
+                </li>
+                <li *ngIf="exhibition.numberOfExhibits != 1">
+                    <mat-card>
+                        <mat-icon>filter_1</mat-icon> {{ exhibition.numberOfExhibits }} eksponata
+                    </mat-card>
+                </li>
+                <li *ngIf="exhibition.numberOfExhibits === 1">
+                    <mat-card>
+                        <mat-icon>filter_1</mat-icon> {{ exhibition.numberOfExhibits }} eksponat
+                    </mat-card>
+                </li>
+                <li>
+                    <mat-card>
+                        <mat-icon>sell</mat-icon> {{ exhibition.price }} rsd
+                    </mat-card>
+                </li>
+                <li>
+                    <mat-card>
+                        <mat-icon>schedule</mat-icon> {{ exhibition.time }} min
+                    </mat-card>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <hr>
+    <h2 class="exhibits-heading">Eksponati</h2>
+
+    <div class="row">
+        <div class="col-md-3 mt-3 text-center mb-5" *ngFor="let exhibit of exhibits">
+            <h3>{{ exhibit.name }}</h3>
+            <div class="container-exhibit">
+                <img class="img-fluid rounded" src="{{ exhibit.imagePath }}" alt="{{ exhibit.name }}">
+                <div class="overlay" (click)="openDialog(exhibit.id)">
+                    <div class="text">Details</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

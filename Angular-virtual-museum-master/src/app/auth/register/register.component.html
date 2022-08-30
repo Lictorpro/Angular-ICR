@@ -1,0 +1,32 @@
+<section>
+    <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutGap="10px">
+        <mat-form-field>
+            <input type="text" matInput placeholder="Korisničko ime" ngModel name="username" required>
+        </mat-form-field>
+        <mat-form-field hintLabel="Lozinka mora biti duga najmanje 4 karaktera.">
+            <input type="password" matInput placeholder="Lozinka" ngModel name="password" required minlength="4" #passInput="ngModel">
+            <mat-hint align="end">{{ passInput.value?.length }} / 4</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput placeholder="Ime" ngModel name="firstName" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput placeholder="Prezime" ngModel name="lastName" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="email" matInput placeholder="Email" ngModel name="email" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput placeholder="Broj telefona" ngModel name="phone" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput placeholder="Adresa" ngModel name="address" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput placeholder="Omiljena vrsta eksponata" ngModel name="favouriteExhibits" required>
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="accent" [disabled]="f.invalid">Registruj se</button>
+        <mat-label *ngIf="errorExists">{{ errorText }}</mat-label>
+        <a routerLink="/login">Vrati se na prijavu.</a>
+    </form>
+</section>
